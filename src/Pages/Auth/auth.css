@@ -1,0 +1,168 @@
+.login {
+    width: 45%;
+    margin: 0 auto;
+    padding-top: 5%;
+    text-align: center;
+}
+
+.login h2 {
+    font-weight: 700;
+    font-size: 2.35em;
+    margin-bottom: 7%;
+    color: #054652;
+}
+
+.login input {
+    background-color: #EDEDED;
+    border-radius: 15px;
+    padding: 3% 0;
+    padding-left: 3%;
+    width: 100%;
+}
+
+.login input::placeholder {
+
+    font-weight: bold;
+    color: grey;
+}
+
+.login input::target-text {
+    padding-left: 3%;
+    font-weight: bold;
+    color: grey;
+}
+
+.login .form-control:focus {
+    box-shadow: 2px 2px 2px #0497d1;
+    border: 2px solid #0497d1;
+}
+
+.login button {
+    background-color: #00AFF5;
+    margin-top: 2%;
+    padding: 2% 6%;
+    font-size: 1em;
+    border-radius: 30px;
+    border: none;
+    font-weight: 600;
+}
+
+.login button:hover {
+    background-color: #0497d1;
+}
+
+.login p {
+    color: #00AFF5;
+    text-align: left;
+    margin-bottom: 5%;
+    margin-top: 4%;
+}
+
+
+.signup {
+    width: 45%;
+    margin: 0 auto;
+    padding-top: 5%;
+    text-align: center;
+}
+
+.signup h2 {
+    font-weight: 700;
+    font-size: 2.35em;
+    margin-bottom: 7%;
+    color: #054652;
+}
+
+.signup input {
+    background-color: #EDEDED;
+    border-radius: 15px;
+    padding: 3% 0;
+    padding-left: 3%;
+    padding-right: 3%;
+    width: 100%;
+}
+
+.signup input::placeholder {
+
+    font-weight: bold;
+    color: grey;
+}
+
+.signup input::target-text {
+    padding-left: 3%;
+    font-weight: bold;
+    color: grey;
+}
+
+.signup .form-control:focus {
+    box-shadow: 2px 2px 2px #0497d1;
+    border: 2px solid #0497d1;
+}
+
+.signup button {
+    background-color: #00AFF5;
+    margin-top: 2%;
+    padding: 2% 6%;
+    font-size: 1em;
+    border-radius: 30px;
+    border: none;
+    font-weight: 600;
+}
+
+.signup button:hover {
+    background-color: #0497d1;
+}
+
+.signup p {
+    color: red;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+
+.custum-file-upload {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #cacaca;
+    background-color: rgba(255, 255, 255, 1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 48px 35px -48px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    margin-bottom: 2%;
+}
+
+.custum-file-upload .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custum-file-upload .icon svg {
+    height: 80px;
+    fill: rgba(75, 85, 99, 1);
+}
+
+.custum-file-upload .text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custum-file-upload .text span {
+    font-weight: 400;
+    color: rgba(75, 85, 99, 1);
+}
+
+.custum-file-upload input {
+    display: none;
+}

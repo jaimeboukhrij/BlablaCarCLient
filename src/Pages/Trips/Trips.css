@@ -1,0 +1,292 @@
+.createTrip {
+    padding-top: 8%;
+
+}
+
+
+
+.createTrip h2 {
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    font-size: 3em;
+    margin-bottom: 7%;
+    color: #054652;
+}
+
+.createTrip input {
+    background-color: #EDEDED;
+    border-radius: 15px;
+    padding: 3% 0;
+    padding-left: 3%;
+    padding-right: 3%;
+    width: 100%;
+    margin-left: 2%;
+}
+
+.createTrip input::placeholder {
+
+    font-weight: bold;
+    color: grey;
+}
+
+.createTrip input::target-text {
+    padding-left: 3%;
+    font-weight: bold;
+    color: grey;
+}
+
+.createTrip .form-control:focus {
+    box-shadow: 2px 2px 2px #0497d1;
+    border: 2px solid #0497d1;
+}
+
+.createTrip button {
+    background-color: #00AFF5;
+    margin-left: 5%;
+    margin-top: 8%;
+    padding: 2% 6%;
+    font-size: 1em;
+    border-radius: 30px;
+    border: none;
+    font-weight: 600;
+}
+
+.createTrip button:hover {
+    background-color: #0497d1;
+}
+
+.createTrip p {
+    color: red;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.createTrip .origin {
+    position: relative;
+    background-color: white;
+    top: 80%;
+    left: 5%;
+    min-height: 20vh;
+    width: 30%;
+    border-radius: 10px;
+    z-index: 99;
+    padding: 1% 4px;
+}
+
+.createTrip input {
+    border: none;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: black;
+}
+
+.createTrip .eachOrigin {
+    text-align: left;
+    width: 300%;
+    padding-left: 6%;
+    padding-top: 12%;
+    padding-right: 8%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgb(209, 208, 208);
+}
+
+.createTrip .eachOrigin:hover {
+    background-color: rgb(237, 236, 236);
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.createTrip .eachOrigin h6 {
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+.createTrip .eachOrigin span {
+    font-size: 1.3em;
+}
+
+
+.map-container {
+    height: 90vh;
+}
+
+.react-datepicker-wrapper {
+    display: none !important;
+}
+
+
+.react-datepicker {
+    width: 200%;
+}
+
+.react-datepicker__month-container {
+    width: 200%;
+}
+
+
+.modalCreateTrip .body {
+    display: flex;
+    flex-direction: column;
+}
+
+.modalCreateTrip h3 {
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+.modalCreateTrip .body h6 {
+    font-size: 1.7em;
+    font-weight: 550;
+    margin-bottom: 4%;
+}
+
+.modalCreateTrip .body span {
+    font-size: 1em;
+    font-weight: normal;
+}
+
+
+
+
+
+.tripResults {
+    background-color: #F6F8F9;
+    min-height: 100vh;
+    padding: 5%;
+    padding-top: 10%;
+}
+
+.tripResults .sortBy {
+    margin-bottom: 10%;
+}
+
+
+.tripResults .sortBy h5 {
+    margin-left: 7%;
+    font-size: 1.1em;
+    font-weight: 540
+}
+
+.tripResults .sortBy .eachSort {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+
+.tripResults .form-check-input {
+    border: 2px solid #00AFF5;
+    width: 20px;
+    height: 20px;
+}
+
+.tripResults .form-check-input[type="radio"]:checked {
+    border: 2px solid #00AFF5;
+    background-color: #00AFF5;
+}
+
+.tripResults .separation {
+    height: 8px;
+    background-color: #e8e6e6;
+    border-radius: 10px;
+}
+
+
+
+
+.tripResults .TimeDeparture {
+    margin-bottom: 10%;
+}
+
+
+.tripResults .TimeDeparture h5 {
+    font-size: 1.1em;
+    font-weight: 540
+}
+
+.tripResults .TimeDeparture .eachSort {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+
+
+.tripResults .results p {
+    margin: 0;
+    color: #728D92;
+    font-weight: bold;
+}
+
+.tripResults .results span {
+    margin: 2%;
+    padding-bottom: -3px;
+}
+
+.tripResults .eachTrip {
+    display: flex;
+    justify-content: space-between;
+    padding: 7% 5%;
+    margin-top: 3%;
+    margin-bottom: 4%;
+    background-color: white;
+    height: 240px;
+    width: 150%;
+    border-radius: 15px;
+    border-top: 1px solid rgb(198, 197, 197);
+    box-shadow: 0px 1px 2px rgb(198, 197, 197);
+    transition: 500ms;
+}
+
+.tripResults .eachTrip:hover {
+    transform: scale(102%);
+    cursor: pointer;
+}
+
+.tripResults .eachTrip .price {
+    font-weight: bold;
+    height: 40px;
+}
+
+
+.tripResults .eachTrip .data {
+    min-width: 315px;
+}
+
+.tripResults .eachTrip .data p {
+    display: flex;
+    justify-content: left;
+    width: 140%;
+    color: black;
+    font-size: 1.2em;
+}
+
+.tripResults .eachTrip .data p:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    width: 140%;
+    color: rgb(125, 122, 122);
+    margin-left: 4%;
+    font-weight: 600;
+    font-size: 1.1em !important;
+}
+
+.tripResults .eachTrip img {
+    width: 50px;
+    object-fit: cover;
+    clip-path: circle();
+}
+
+.tripResults .eachTrip .userTrip span {
+    font-weight: 540;
+}
+
+.tripResults .eachTrip .line {
+    position: relative;
+    left: 16.2%;
+    bottom: 89%;
+}

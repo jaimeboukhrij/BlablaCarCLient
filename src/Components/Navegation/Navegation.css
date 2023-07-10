@@ -1,0 +1,27 @@
+.navbar img {
+    width: 150px;
+    filter: brightness(1);
+}
+
+.dropdown-menu[data-bs-popper] {
+    width: 10vh;
+    left: -120% !important;
+}
+
+.nav-link {
+    color: #0497d1 !important;
+    font-weight: 600 !important;
+}
+
+.nav-link span {
+    position: relative;
+    top: 16%;
+}
+
+#navbarScrollingDropdown img {
+    width: 50px;
+    object-fit: cover;
+    clip-path: circle();
+    position: relative;
+    top: 0%;
+}
