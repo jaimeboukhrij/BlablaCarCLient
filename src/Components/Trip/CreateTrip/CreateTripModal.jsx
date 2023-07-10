@@ -1,22 +1,18 @@
-import { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import tripService from '../../../services/Trip.services';
-import { AuthContext } from '../../../contexts/auth.context';
 import { useNavigate } from "react-router-dom"
 
 const CreateTripModal = ({ showModal, handleClose, tripData }) => {
 
-    const { user } = useContext(AuthContext)
     const navigate = useNavigate()
 
-    console.log(user)
-
     const handleSubmit = () => {
-        handleClose
+        handleClose()
         tripService
             .save(tripData)
             .then(() => navigate("/"))
+            .catch(e => console.log(e))
 
     }
 
@@ -35,6 +31,8 @@ const CreateTripModal = ({ showModal, handleClose, tripData }) => {
                         <h6>Hora de salida: <span>{tripData.hour}h</span></h6>
                         <h6>Pasajeros: <span>{tripData.passengers}</span></h6>
                         <h6>Precio: <span>{tripData.price}€</span></h6>
+
+
                     </div>
 
 

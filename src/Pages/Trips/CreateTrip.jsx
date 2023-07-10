@@ -16,7 +16,9 @@ const CreateTrip = () => {
         price: 20,
         hourDeparture: `${new Date().getHours()}:${new Date().getMinutes()}`,
         duration: "",
-        hourArrival: ""
+        hourArrival: "",
+        pets: false,
+        smoke: false
 
     })
 

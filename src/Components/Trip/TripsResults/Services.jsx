@@ -2,12 +2,26 @@ import { Col, Form } from "react-bootstrap";
 
 
 
-const Services = () => {
+const Services = ({ setSelectedTimeDeparture }) => {
 
     const check = <box-icon name='check-shield' type='solid' color='#00aff5' ></box-icon>
     const userplus = <box-icon name='user-plus'></box-icon>
     const smoke = <box-icon type='solid' name='hot'></box-icon>
     const dog = <box-icon type='solid' name='dog'></box-icon>
+
+
+    const handleCheckboxChange = (event) => {
+        const checkboxValue = event.target.value;
+        const isChecked = event.target.checked;
+
+        if (isChecked) {
+            setSelectedTimeDeparture((prevSelectedCheckboxes) => [...prevSelectedCheckboxes, checkboxValue]);
+        } else {
+            setSelectedTimeDeparture((prevSelectedCheckboxes) =>
+                prevSelectedCheckboxes.filter((value) => value !== checkboxValue)
+            );
+        }
+    };
 
     return (
         <section className="sortBy">
@@ -25,6 +39,8 @@ const Services = () => {
                     reverse
                     name="group1"
                     type="checkbox"
+                    value={"checkProfile"}
+                    onChange={handleCheckboxChange}
                 />
             </div>
             <div className="eachSort">
@@ -36,6 +52,8 @@ const Services = () => {
                     reverse
                     name="group1"
                     type="checkbox"
+                    value={"maxPassengers"}
+                    onChange={handleCheckboxChange}
 
                 />
             </div>
@@ -48,6 +66,8 @@ const Services = () => {
                     reverse
                     name="group1"
                     type="checkbox"
+                    value={"smoke"}
+                    onChange={handleCheckboxChange}
 
                 />
             </div>
@@ -62,6 +82,8 @@ const Services = () => {
                     reverse
                     name="group1"
                     type="checkbox"
+                    value={"pets"}
+                    onChange={handleCheckboxChange}
 
                 />
             </div>

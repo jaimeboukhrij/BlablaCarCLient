@@ -6,13 +6,16 @@ import tripService from "../../services/Trip.services"
 import TripsResult from "../../Components/Trip/TripsResults/TripsResult"
 import FilterResults from "../../Components/Trip/TripsResults/FilterResults"
 import { Row } from "react-bootstrap"
+import SortArrByTimeEarlier from "../../utils/SortArrByTimeEarlier"
+import SortArrByTimeLater from "../../utils/SortArrByTimeLater"
+import SortTimeDeparture from "../../utils/SortTimeDeparture"
 
 
 const TripsResults = () => {
 
     const [tripsBringResults, setTripsBringResults] = useState()
-
-
+    const [resultSortBy, setResultSortBy] = useState("earlier")
+    const [selectedTimeDeparture, setSelectedTimeDeparture] = useState([]);
     const { origen, idOrigen, destino, idDestino, date } = useParams()
     const tripData = {
         origin: origen,
@@ -23,17 +26,40 @@ const TripsResults = () => {
     }
 
 
+
+
     useEffect(() => {
-        tripService
-            .getTrip({ tripData })
-            .then(({ data }) => setTripsBringResults(data))
-    }, [])
+        selectedTimeDeparture.length > 0 ?
+            tripService
+                .getTrip({ tripData })
+                .then(({ data }) => (SortTimeDeparture(selectedTimeDeparture, data)))
+                .then((data) => {
+                    resultSortBy == "earlier" && setTripsBringResults(SortArrByTimeEarlier(data))
+                    resultSortBy == "later" && setTripsBringResults(SortArrByTimeLater(data))
+                    resultSortBy == "cheaper" && setTripsBringResults(data.sort((a, b) => a.price - b.price))
+                    resultSortBy == "expensive" && setTripsBringResults(data.sort((a, b) => b.price - a.price))
+                })
+                .catch(e => console.log(e))
+
+            : tripService
+                .getTrip({ tripData })
+                .then(({ data }) => {
+                    resultSortBy == "earlier" && setTripsBringResults(SortArrByTimeEarlier(data))
+                    resultSortBy == "later" && setTripsBringResults(SortArrByTimeLater(data))
+                    resultSortBy == "cheaper" && setTripsBringResults(data.sort((a, b) => a.price - b.price))
+                    resultSortBy == "expensive" && setTripsBringResults(data.sort((a, b) => b.price - a.price))
+                })
+                .catch(e => console.log(e))
+    }, [resultSortBy, selectedTimeDeparture])
+
 
 
 
     return (
         <Row className="tripResults">
-            <FilterResults />
+            <FilterResults setTripsBringResults={setTripsBringResults} setResultSortBy={setResultSortBy}
+                setSelectedTimeDeparture={setSelectedTimeDeparture}
+            />
             <TripsResult tripsBringResults={tripsBringResults} />
         </Row>
     )
@@ -41,3 +67,6 @@ const TripsResults = () => {
 
 
 export default TripsResults
+
+
+

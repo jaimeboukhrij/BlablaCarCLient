@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Button, Col, Row } from "react-bootstrap"
+import { Button, Col, Form, Row } from "react-bootstrap"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import RouteMap from "../../Others/Map/RouteMap"
@@ -14,12 +14,10 @@ const CreateTripDate = ({ tripData, setTripData, setSection }) => {
     const [currentHour, setCurrentHour] = useState("")
     const [showModal, setShowModal] = useState(false)
 
-
-
-    const today = new Date()
-    const currentTime = today.toISOString().slice(0, 16)
     const minus = <box-icon name="minus-circle" color="#0a8ec2"></box-icon>
     const plus = <box-icon name="plus-circle" color="#0a8ec2"></box-icon>
+
+    console.log("++++++++++++++0", tripData)
 
     useEffect(() => {
         getCoordinates(tripData.originId).then((data) => setCoordinates_origin(data))
@@ -120,6 +118,27 @@ const CreateTripDate = ({ tripData, setTripData, setSection }) => {
                                 </span>
                             </div>
                         </Col>
+
+                        <Col md={{ span: 8, offset: 1 }} style={{ marginTop: "8%" }}>
+                            <h2 style={{ fontSize: "1.5em" }}>¿Se admiten mascotas?</h2>
+                            <div style={{ display: "flex", justifyContent: "center" }}>
+                                <select class="form-select" onChange={(e) => setTripData({ ...tripData, pets: e.target.value == "false" ? false : true })}>
+                                    <option value="false">No admito mascotas en el viaje</option>
+                                    <option value="true">Si admito mascotas en el viaje</option>
+                                </select>
+                            </div>
+                        </Col>
+
+                        <Col md={{ span: 8, offset: 1 }} style={{ marginTop: "8%" }}>
+                            <h2 style={{ fontSize: "1.5em" }}>¿Se permite fumar?</h2>
+                            <div style={{ display: "flex", justifyContent: "center" }}>
+                                <select class="form-select" onChange={(e) => setTripData({ ...tripData, smoke: e.target.value == "false" ? false : true })}>
+                                    <option value="false">No admito mascotas en el viaje</option>
+                                    <option value="true">Si se puede fumar en el viaje</option>
+                                </select>
+                            </div>
+                        </Col>
+
 
                         <Col md={{ span: 8, offset: 2 }} style={{ marginTop: "5%" }}>
                             <Button onClick={handleShow}>Crear Viaje</Button>

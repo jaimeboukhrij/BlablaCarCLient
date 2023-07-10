@@ -183,6 +183,7 @@
     border: 2px solid #00AFF5;
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .tripResults .form-check-input[type="radio"]:checked {
@@ -250,6 +251,7 @@
 .tripResults .eachTrip .price {
     font-weight: bold;
     height: 40px;
+    margin-bottom: 190%;
 }
 
 
@@ -281,8 +283,12 @@
     clip-path: circle();
 }
 
+
+
+
 .tripResults .eachTrip .userTrip span {
     font-weight: 540;
+
 }
 
 .tripResults .eachTrip .line {
