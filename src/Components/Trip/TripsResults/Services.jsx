@@ -1,13 +1,15 @@
+import { useEffect } from "react";
 import { Col, Form } from "react-bootstrap";
 
 
 
-const Services = ({ setSelectedTimeDeparture }) => {
+const Services = ({ setSelectedTimeDeparture, setClearAll, clearAll, selectedTimeDeparture }) => {
 
     const check = <box-icon name='check-shield' type='solid' color='#00aff5' ></box-icon>
     const userplus = <box-icon name='user-plus'></box-icon>
     const smoke = <box-icon type='solid' name='hot'></box-icon>
     const dog = <box-icon type='solid' name='dog'></box-icon>
+
 
 
     const handleCheckboxChange = (event) => {
@@ -22,6 +24,11 @@ const Services = ({ setSelectedTimeDeparture }) => {
             );
         }
     };
+
+    useEffect(() => {
+        setSelectedTimeDeparture([]);
+    }, [clearAll, setSelectedTimeDeparture]);
+
 
     return (
         <section className="sortBy">
@@ -41,6 +48,9 @@ const Services = ({ setSelectedTimeDeparture }) => {
                     type="checkbox"
                     value={"checkProfile"}
                     onChange={handleCheckboxChange}
+                    checked={selectedTimeDeparture.includes("checkProfile") ? true : false}
+
+
                 />
             </div>
             <div className="eachSort">
@@ -54,6 +64,8 @@ const Services = ({ setSelectedTimeDeparture }) => {
                     type="checkbox"
                     value={"maxPassengers"}
                     onChange={handleCheckboxChange}
+                    checked={selectedTimeDeparture.includes("maxPassengers") ? true : false}
+
 
                 />
             </div>
@@ -68,6 +80,9 @@ const Services = ({ setSelectedTimeDeparture }) => {
                     type="checkbox"
                     value={"smoke"}
                     onChange={handleCheckboxChange}
+                    checked={selectedTimeDeparture.includes("smoke") ? true : false}
+
+
 
                 />
             </div>
@@ -84,6 +99,9 @@ const Services = ({ setSelectedTimeDeparture }) => {
                     type="checkbox"
                     value={"pets"}
                     onChange={handleCheckboxChange}
+                    checked={selectedTimeDeparture.includes("pets") ? true : false}
+
+
 
                 />
             </div>

@@ -157,7 +157,7 @@
 
 .tripResults {
     background-color: #F6F8F9;
-    min-height: 100vh;
+    height: 120vh;
     padding: 5%;
     padding-top: 10%;
 }
@@ -217,6 +217,13 @@
 }
 
 
+.tripResults .results {
+    height: 100vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
 .tripResults .results p {
     margin: 0;
     color: #728D92;
@@ -236,7 +243,7 @@
     margin-bottom: 4%;
     background-color: white;
     height: 240px;
-    width: 150%;
+    width: 100%;
     border-radius: 15px;
     border-top: 1px solid rgb(198, 197, 197);
     box-shadow: 0px 1px 2px rgb(198, 197, 197);
@@ -294,5 +301,222 @@
 .tripResults .eachTrip .line {
     position: relative;
     left: 16.2%;
-    bottom: 89%;
+    bottom: 100%;
+}
+
+
+
+.searchTripLink {
+    height: 20vh;
+    background-size: cover;
+    background-position: 5%;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding-top: 8%;
+
+}
+
+.searchTripLink h1 {
+    margin: 0;
+    color: #054652;
+    font-weight: 900;
+    font-size: 2.4em;
+}
+
+.searchTripLink .input-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+    top: 77%;
+    padding-left: 3%;
+}
+
+.searchTripLink .input-wrapper input {
+    background-color: white;
+    border: none;
+    border-right: 1px solid rgb(177, 173, 173);
+    border-top: 1px solid rgb(177, 173, 173);
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 11em;
+    color: black;
+    box-shadow: 3px 3px 3px rgb(191, 191, 191);
+}
+
+
+
+.searchTripLink .input-wrapper input:nth-child(3),
+.searchTripLink .input-wrapper input:nth-child(4) {
+    background-color: white;
+    border: none;
+    border-right: 1px solid rgb(177, 173, 173);
+    border-top: 1px solid rgb(177, 173, 173);
+    padding: 1rem;
+    font-size: 1.2rem;
+    width: 9em;
+    color: black;
+    width: 9em;
+}
+
+.searchTripLink .input-wrapper input:nth-child(4):hover {
+    cursor: pointer;
+}
+
+.searchTripLink .input-wrapper input:nth-child(3) {
+    height: 61px;
+}
+
+.searchTripLink .input-wrapper input:nth-child(3):hover {
+    cursor: text;
+}
+
+.searchTripLink .input-wrapper input:nth-child(1) {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-left: 1px solid rgb(177, 173, 173);
+
+}
+
+.searchTripLink .input-wrapper input:nth-child(5) {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #00AFF5;
+    color: white;
+    font-weight: 400;
+    width: 11em;
+}
+
+
+.searchTripLink .input-wrapper input:nth-child(5):hover {
+    cursor: pointer;
+    background-color: #0a8ec2;
+}
+
+
+
+.searchTripLink .origin {
+    position: relative;
+    background-color: white;
+    top: 80%;
+    left: 5%;
+    min-height: 20vh;
+    width: 30%;
+    border-radius: 10px;
+    z-index: 99;
+    box-shadow: 0px 1px 8px gray;
+    padding: 1% 4px;
+}
+
+.searchTripLink .destination {
+    position: relative;
+    background-color: white;
+    top: 80%;
+    left: 17%;
+    min-height: 20vh;
+    width: 30%;
+    border-radius: 10px;
+    z-index: 99;
+    box-shadow: 0px 1px 8px gray;
+    padding: 1% 4px;
+}
+
+.passengers {
+    position: relative;
+    background-color: white;
+    top: 79%;
+    left: 39%;
+    height: 70px;
+    width: 25%;
+    border-radius: 10px;
+    z-index: 99;
+    box-shadow: 0px 1px 8px gray;
+    padding: 0 2%;
+    padding-top: 2%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.passengers h6,
+span {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.passengers span {
+    height: fit-content;
+}
+
+.passengers span:hover {
+    cursor: pointer;
+}
+
+.passengers span:nth-child(2):hover {
+    cursor: auto;
+}
+
+.passengers span:nth-child(2) {
+    margin: 0 10px;
+}
+
+.searchTripLink .eachOrigin {
+    text-align: left;
+    padding-left: 6%;
+    padding-top: 7%;
+    padding-right: 8%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchTripLink .eachOrigin:hover {
+    background-color: rgb(237, 236, 236);
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.searchTripLink .eachOrigin h6 {
+    font-weight: 600;
+    font-size: 1.3em;
+}
+
+.searchTripLink .eachOrigin span {
+    font-size: 1.3em;
+}
+
+
+/* ----------------------------DETAILS TRIP------------------------------------------------------------- */
+
+.detailsTrip {
+    padding-top: 5%;
+    height: 150vh;
+}
+
+.detailsTrip .section3 {
+    height: 10vh;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid rgb(183, 182, 182);
+    display: flex;
+    justify-content: center;
+}
+
+.detailsTrip .section3 button {
+    background-color: #00AFF5;
+    color: white;
+    height: 50%;
+    border: none;
+    border-radius: 30px;
+    padding: 0 20px;
+    margin-top: 2%;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+
+.detailsTrip .section3 button:hover {
+    background-color: #0a95cc;
+
 }

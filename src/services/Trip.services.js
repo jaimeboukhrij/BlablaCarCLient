@@ -27,9 +27,17 @@ class TripService {
         return this.api.get(`/${tripData.origin}/${tripData.destination}/${tripData.date}/${tripData.originId}/${tripData.destinationId}`)
     }
 
+    getOneTrip(idTrip) {
+        return this.api.get(`/${idTrip}`)
+    }
 
     save(tripData) {
         return this.api.post('/', tripData)
+    }
+
+    tripRequest(data) {
+        console.log("servicio", data)
+        return this.api.put(`/tripRequest`, data)
     }
 
 

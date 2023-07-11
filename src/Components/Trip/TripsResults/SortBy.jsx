@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 
-const SortBy = ({ setResultSortBy }) => {
+const SortBy = ({ setResultSortBy, setClearAll, clearAll }) => {
     const [selectedOption, setSelectedOption] = useState("earlier");
 
     const time = <box-icon name="time-five" size="1.4em"></box-icon>;
@@ -14,12 +14,16 @@ const SortBy = ({ setResultSortBy }) => {
         setResultSortBy(event.target.value)
     }
 
+    useEffect(() => setSelectedOption("earlier"), [clearAll]);
+
     return (
         <section className="sortBy">
             <Form>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "6%" }}>
                     <h4 style={{ fontWeight: "bold" }}>Ordenar por</h4>
-                    <p style={{ fontSize: "1em", color: "#00AFF5", fontWeight: "bold", cursor: "pointer" }}>Borrar todo</p>
+                    <p
+                        onClick={() => setClearAll(!clearAll)}
+                        style={{ fontSize: "1em", color: "#00AFF5", fontWeight: "bold", cursor: "pointer" }}>Borrar todo</p>
                 </div>
 
                 <div className="eachSort">

@@ -17,7 +17,6 @@ const CreateTripDate = ({ tripData, setTripData, setSection }) => {
     const minus = <box-icon name="minus-circle" color="#0a8ec2"></box-icon>
     const plus = <box-icon name="plus-circle" color="#0a8ec2"></box-icon>
 
-    console.log("++++++++++++++0", tripData)
 
     useEffect(() => {
         getCoordinates(tripData.originId).then((data) => setCoordinates_origin(data))

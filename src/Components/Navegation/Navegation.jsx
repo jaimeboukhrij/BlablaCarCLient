@@ -16,7 +16,6 @@ const Navegation = () => {
     const search = <box-icon name='search' color="#00AFF5"></box-icon>
     const plus = <box-icon name='plus-circle' color="#00AFF5"></box-icon>
     const userBox = <box-icon name='user' type='solid' color='#00AFF5' ></box-icon>
-    const userAvatar = <img src={user?.avatar}></img>
 
     const navigate = useNavigate()
 
@@ -28,7 +27,7 @@ const Navegation = () => {
                     <Navbar.Brand style={{ cursor: "pointer" }} onClick={() => navigate("/")}>
                         {<img src={blablaLogo}></img>}</Navbar.Brand>
                     <Nav>
-                        <Nav.Link>
+                        <Nav.Link onClick={() => navigate("/buscarviaje")}>
                             <span>{search} </span> Buscar
                         </Nav.Link>
 
@@ -37,7 +36,7 @@ const Navegation = () => {
                         </Nav.Link>
 
                         {user
-                            ? <NavDropdown title={user ? userAvatar : userBox} id="navbarScrollingDropdown" className="menuShow" style={{ marginTop: "2%" }}>
+                            ? <NavDropdown title={user ? <img src={user.avatar}></img> : userBox} id="navbarScrollingDropdown" className="menuShow" style={{ marginTop: "2%" }}>
                                 <NavDropdown.Item onClick={() => navigate("/login")}>Mi Perfil</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={logout}>Cerrar Sesion</NavDropdown.Item>

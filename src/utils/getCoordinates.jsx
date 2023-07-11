@@ -1,6 +1,7 @@
 import axios from "axios"
 
 const getCoordinates = async (placeId) => {
+
     try {
         const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?place_id=${placeId}&key=AIzaSyBtc80oZ9lOnbwQODIRr0lG8MOlhxpXb94`);
 

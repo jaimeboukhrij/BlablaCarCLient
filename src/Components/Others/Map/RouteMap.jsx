@@ -2,6 +2,8 @@ import React, { useMemo, useState, useEffect } from "react";
 import { GoogleMap, Marker, DirectionsService, DirectionsRenderer } from "@react-google-maps/api";
 
 const RouteMap = ({ coordinates_origin, coordinates_destination, setTripData, tripData }) => {
+
+    console.log("-----", coordinates_origin, coordinates_destination)
     const [center, setCenter] = useState(coordinates_origin);
     const [directions, setDirections] = useState(null);
     const [duration, setDuration] = useState("");

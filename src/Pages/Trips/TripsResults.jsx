@@ -16,6 +16,7 @@ const TripsResults = () => {
     const [tripsBringResults, setTripsBringResults] = useState()
     const [resultSortBy, setResultSortBy] = useState("earlier")
     const [selectedTimeDeparture, setSelectedTimeDeparture] = useState([]);
+    const [clearAll, setClearAll] = useState(false)
     const { origen, idOrigen, destino, idDestino, date } = useParams()
     const tripData = {
         origin: origen,
@@ -27,6 +28,15 @@ const TripsResults = () => {
 
 
 
+
+    useEffect(() => {
+        setResultSortBy("earlier")
+        tripService
+            .getTrip({ tripData })
+            .then(({ data }) => setTripsBringResults(SortArrByTimeEarlier(data)))
+            .catch(e => console.log(e))
+
+    }, [clearAll]);
 
     useEffect(() => {
         selectedTimeDeparture.length > 0 ?
@@ -58,7 +68,8 @@ const TripsResults = () => {
     return (
         <Row className="tripResults">
             <FilterResults setTripsBringResults={setTripsBringResults} setResultSortBy={setResultSortBy}
-                setSelectedTimeDeparture={setSelectedTimeDeparture}
+                setSelectedTimeDeparture={setSelectedTimeDeparture} selectedTimeDeparture={selectedTimeDeparture}
+                setClearAll={setClearAll} clearAll={clearAll}
             />
             <TripsResult tripsBringResults={tripsBringResults} />
         </Row>
