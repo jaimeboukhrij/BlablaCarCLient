@@ -17,10 +17,25 @@ const DetailsRouteMap = ({ coordinates_origin, coordinates_destination }) => {
         }
     };
 
+    const handleLoad = (map) => {
+        const directionsService = new window.google.maps.DirectionsService();
+        directionsService.route(
+            {
+                origin: coordinates_origin,
+                destination: coordinates_destination,
+                travelMode: "DRIVING",
+            },
+            directionsCallback
+        );
+    };
 
     return (
-        <LoadScript googleMapsApiKey="AIzaSyBtc80oZ9lOnbwQODIRr0lG8MOlhxpXb94">
-            <GoogleMap zoom={7} center={center} mapContainerStyle={{ height: "30vh", width: "100%" }}>
+        <LoadScript googleMapsApiKey="AIzaSyBtc80oZ9lOnbwQODIRr0lG8MOlhxpXb94" onLoad={handleLoad}>
+            <GoogleMap
+                zoom={7}
+                center={center}
+                mapContainerStyle={{ height: "30vh", width: "100%" }}
+            >
                 <Marker position={center} />
 
                 {directions && <DirectionsRenderer directions={directions} />}
@@ -30,15 +45,6 @@ const DetailsRouteMap = ({ coordinates_origin, coordinates_destination }) => {
                         <p>Duración del trayecto: {duration}</p>
                     </div>
                 )}
-
-                <DirectionsService
-                    options={{
-                        destination: coordinates_destination,
-                        origin: center,
-                        travelMode: "DRIVING",
-                    }}
-                    callback={directionsCallback}
-                />
             </GoogleMap>
         </LoadScript>
     );

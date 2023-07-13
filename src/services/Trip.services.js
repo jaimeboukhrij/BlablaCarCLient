@@ -31,14 +31,24 @@ class TripService {
         return this.api.get(`/${idTrip}`)
     }
 
+    getOwnerTrips(idUser) {
+        return this.api.get(`/owner/${idUser}`)
+    }
+
     save(tripData) {
         return this.api.post('/', tripData)
     }
 
     tripRequest(data) {
-        console.log("servicio", data)
         return this.api.put(`/tripRequest`, data)
     }
+
+
+    tripPassengers(data) {
+        console.log("dataaaa", data)
+        return this.api.put(`/passengers`, data)
+    }
+
 
 
 }

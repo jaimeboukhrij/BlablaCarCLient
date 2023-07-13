@@ -13,8 +13,8 @@ const DetailsTrip = () => {
     const [tripData, setTripData] = useState()
     const [coordinates_origin, setCoordinates_origin] = useState()
     const [coordinates_destination, setCoordinates_destination] = useState()
+    const [showButton, setButton] = useState()
 
-    console.log(tripData)
 
     const { idViaje: idTrip } = useParams()
 
@@ -24,24 +24,36 @@ const DetailsTrip = () => {
         tripService
             .getOneTrip(idTrip)
             .then(({ data }) => {
+                getCoordinates(data.origin.id).then((data) => setCoordinates_origin(data))
+                getCoordinates(data.destination.id).then((data) => setCoordinates_destination(data))
                 setTripData(data)
-
             })
+            .catch(e => console.log(e))
+
+        tripService
+            .getOneTrip(idTrip)
+            .then(({ data }) => {
+                data?.request.includes(user?.id)
+                    ? setButton(false)
+                    : setButton(true)
+            })
+            .catch(e => console.log(e))
     }, [])
 
-    useEffect(() => {
-        if (tripData) {
-            getCoordinates(tripData?.origin.id).then((data) => setCoordinates_origin(data))
-            getCoordinates(tripData?.destination.id).then((data) => setCoordinates_destination(data))
-        }
-    }, [tripData])
+
+
 
 
     const handleButton = () => {
         if (user && tripData) {
             const { _id: idUser } = user
             const { _id: idTrip } = tripData
-            tripService.tripRequest({ idUser, idTrip });
+
+            tripService
+                .tripRequest({ idUser, idTrip })
+                .then(() => setButton(!showButton))
+                .catch(e => console.log(e))
+
         }
     };
 
@@ -49,18 +61,25 @@ const DetailsTrip = () => {
     return (
         <main className="detailsTrip">
             <header>
+
                 {
                     (coordinates_origin && coordinates_destination)
-                        ? <DetailsRouteMap coordinates_origin={coordinates_origin} coordinates_destination={coordinates_destination} />
+
+                        ? <DetailsRouteMap coordinates_origin={coordinates_origin} coordinates_destination={coordinates_destination} ></DetailsRouteMap>
                         : <Loading />
                 }
+
 
             </header>
 
             {
                 (tripData?.owner != user?._id) &&
                 <section className="section3" >
-                    <button onClick={handleButton}> Enviar solicitud</button>
+                    {
+                        showButton
+                            ? <button onClick={handleButton}> Enviar solicitud</button>
+                            : <button style={{ backgroundColor: "red" }} onClick={handleButton}> Eliminar Solicitud</button>
+                    }
                 </section>}
         </main >
     )

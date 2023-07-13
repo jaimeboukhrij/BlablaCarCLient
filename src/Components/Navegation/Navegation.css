@@ -18,10 +18,57 @@
     top: 16%;
 }
 
+.navbar-expand .navbar-nav .dropdown-menu {
+    width: 25.5vh;
+}
+
 #navbarScrollingDropdown img {
     width: 50px;
     object-fit: cover;
     clip-path: circle();
     position: relative;
     top: 0%;
+}
+
+
+.yourTripsRequest .modal-header {
+    border: none;
+    padding-left: 20%;
+
+}
+
+
+
+.yourTripsRequest .modal-body {
+    height: 70vh;
+}
+
+.yourTripsRequest .modal-body .eachTripRequest span:nth-child(3) {
+    margin-left: 3%;
+    font-weight: 545;
+}
+
+.yourTripsRequest .modal-body .eachTripRequest {
+    margin-bottom: 8%;
+}
+
+.yourTripsRequest .modal-body .eachTripRequest .eachRequest {
+    padding: 3% 0;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.yourTripsRequest .modal-body .eachTripRequest .eachRequest:hover {
+    transform: scale(101%);
+    background-color: rgb(244, 241, 241);
+    border-radius: 20px;
+
+}
+
+.yourTripsRequest .modal-body .eachTripRequest .eachRequest img {
+    width: 100px;
+    object-fit: cover;
+    clip-path: circle();
+
 }
