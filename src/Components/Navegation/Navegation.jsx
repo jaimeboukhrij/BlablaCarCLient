@@ -12,6 +12,7 @@ import Modal from 'react-bootstrap/Modal';
 import tripService from "../../services/Trip.services";
 import Loading from "../Others/Loading/Loading";
 import formatDate from "../../utils/FormatDate"
+import { Toast } from 'react-bootstrap'
 
 
 const Navegation = () => {
@@ -19,6 +20,9 @@ const Navegation = () => {
     const [show, setShow] = useState(false)
     const [tripsData, setTripsData] = useState()
     const [showNewData, setNewData] = useState(false)
+    const [showToast, setShowToast] = useState(false)
+    const [toastMessage, setToastMessage] = useState()
+    const [toastBg, setToastBg] = useState()
 
 
 
@@ -32,6 +36,7 @@ const Navegation = () => {
     const navigate = useNavigate()
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const closeToast = () => setShowToast(false)
 
     useEffect(() => {
 
@@ -48,10 +53,31 @@ const Navegation = () => {
         }
     }, [show, showNewData])
 
-    const handleNotCheck = (data) => tripService.tripRequest(data).then(() => setNewData(!showNewData)).catch(e => console.log(e))
+    const handleNotCheck = (data) => {
+        tripService
+            .tripRequest(data)
+            .then(() => setNewData(!showNewData))
+            .catch(e => console.log(e))
+
+        setToastMessage("Solicitud rechazada")
+        setToastBg("danger")
+        setShowToast(true)
+    }
 
 
-    const handleCheck = (data) => tripService.tripPassengers(data).then(() => setNewData(!showNewData)).catch(e => console.log(e))
+
+
+    const handleCheck = (data) => {
+        tripService
+            .tripPassengers(data)
+            .then(() => setNewData(!showNewData))
+            .catch(e => console.log(e))
+
+        setToastMessage("Solicitud aceptada")
+        setToastBg("success")
+        setShowToast(true)
+
+    }
 
 
     return (
@@ -71,9 +97,9 @@ const Navegation = () => {
 
                         {user
                             ? <NavDropdown title={user ? <img src={user.avatar}></img> : userBox} id="navbarScrollingDropdown" style={{ marginTop: "2%" }}>
-                                <NavDropdown.Item onClick={() => navigate("/login")}>Mi Perfil</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => navigate("/perfil")}>Mi Perfil</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => navigate("/tusviajes")}>Tus viajes</NavDropdown.Item>
                                 <NavDropdown.Item onClick={handleShow}>Peticiones de viaje</NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => navigate("/solicitudes")}>Tus viajes</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={logout}>Cerrar Sesion</NavDropdown.Item>
                             </NavDropdown>
@@ -109,7 +135,7 @@ const Navegation = () => {
                     {
 
                         tripsData
-                            ? tripsData.map(({ origin, destination, _id, date, request }, index) => {
+                            ? tripsData.map(({ origin, destination, _id, date, request, passengers, passengersIds }, index) => {
                                 const idTrip = _id
 
                                 return (
@@ -132,7 +158,16 @@ const Navegation = () => {
                                                             <span onClick={() => handleNotCheck({ idTrip, idUser })}
                                                                 style={{ cursor: "pointer" }} >{notCheck}</span>
 
-                                                            <span onClick={() => handleCheck({ idTrip, idUser })}
+                                                            <span onClick={() => {
+                                                                if (passengersIds.length < passengers) { handleCheck({ idTrip, idUser }) }
+                                                                else {
+                                                                    setShowToast(true)
+                                                                    setToastMessage("No le quedan plazas disponibles")
+                                                                    setToastBg("danger")
+
+                                                                }
+                                                            }}
+
                                                                 style={{ cursor: "pointer" }}>{check}</span>
                                                         </div>
                                                     </div>
@@ -149,6 +184,14 @@ const Navegation = () => {
                 </Modal.Body>
 
             </Modal>
+
+            <Toast onClose={closeToast}
+                bg={toastBg}
+                show={showToast} delay={3000} autohide style={{ position: 'fixed', bottom: 10, right: 10, zIndex: "999" }}>
+                <Toast.Header>
+                    <strong className="me-auto">{toastMessage}</strong>
+                </Toast.Header>
+            </Toast>
         </div >
     )
 }

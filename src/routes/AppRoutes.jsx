@@ -8,6 +8,8 @@ import SearchTrip from "../Pages/Trips/SearchTrip"
 import DetailsTrip from "../Pages/Trips/DetailsTrip"
 import PrivateRoute from "./PrivateRoutes"
 import Request from "../Pages/Request/Request"
+import Profile from "../Pages/Profile/Profile"
+import YourTrips from "../Pages/YourTrips/YourTrips"
 
 
 const AppRoutes = () => {
@@ -18,12 +20,14 @@ const AppRoutes = () => {
             <Route path="/" element={<Home />} ></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
-            <Route path="/:origen/:destino/:date/:idOrigen/:idDestino" element={<TripsResults />}></Route>
+            <Route path="/:origen/:destino/:date/:idOrigen/:idDestino/:passengers" element={<TripsResults />}></Route>
             <Route path="/buscarviaje" element={<SearchTrip />}></Route>
 
             <Route element={<PrivateRoute />}>
                 <Route path="/crearviaje" element={<CreateTrip />}></Route>
                 <Route path="/detallesviaje/:idViaje" element={<DetailsTrip />}></Route>
+                <Route path="/profile" element={<Profile />}></Route>
+                <Route path="/tusviajes" element={<YourTrips />}></Route>
 
 
             </Route>

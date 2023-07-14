@@ -490,15 +490,89 @@ span {
 
 .detailsTrip {
     padding-top: 5%;
-    height: 150vh;
+    height: 100vh;
 }
+
+
+.detailsTrip .section2 {
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+    height: 45vh;
+}
+
+.detailsTrip .section2 img {
+    width: 100px;
+    object-fit: cover;
+    clip-path: circle();
+}
+
+.detailsTrip .section2 .driver {
+    width: 90%;
+    margin-bottom: 4%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10%;
+    padding: 10px 0px;
+    transition: 300ms;
+}
+
+.detailsTrip .section2 .driver:hover {
+    cursor: pointer;
+    background-color: #EDEDED;
+    transform: scale(101%);
+    border-radius: 10px;
+}
+
+.detailsTrip .section2 .pass {
+    border-right: 1px solid gray;
+    width: 50%;
+    text-align: center;
+    padding-left: 3%;
+}
+
+.detailsTrip .section2 h3 {
+    margin-bottom: 6%;
+    font-weight: bold;
+}
+
+.detailsTrip .section2 .details {
+    border-right: 2px solid rgb(221, 220, 220);
+    width: 50%;
+    text-align: center;
+}
+
+.detailsTrip .section2 .passengersDetailsTrip .eachPass {
+    width: 90%;
+    margin-bottom: 4%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 2%;
+    padding: 10px 0px;
+    transition: 300ms;
+
+}
+
+.detailsTrip .section2 .passengersDetailsTrip .eachPass:hover {
+    cursor: pointer;
+    background-color: #EDEDED;
+    transform: scale(101%);
+    border-radius: 10px;
+
+}
+
+.detailsTrip .section2 .passengersDetailsTrip .eachPass img {
+    width: 100px;
+    object-fit: cover;
+    clip-path: circle();
+}
+
 
 .detailsTrip .section3 {
     height: 10vh;
     position: fixed;
     bottom: 0;
     width: 100%;
-    border-top: 1px solid rgb(183, 182, 182);
     display: flex;
     justify-content: center;
 }

@@ -17,13 +17,14 @@ const TripsResults = () => {
     const [resultSortBy, setResultSortBy] = useState("earlier")
     const [selectedTimeDeparture, setSelectedTimeDeparture] = useState([]);
     const [clearAll, setClearAll] = useState(false)
-    const { origen, idOrigen, destino, idDestino, date } = useParams()
+    const { origen, idOrigen, destino, idDestino, date, passengers } = useParams()
     const tripData = {
         origin: origen,
         originId: idOrigen,
         destination: destino,
         destinationId: idDestino,
-        date: date
+        date: date,
+        passengers: passengers
     }
 
 
@@ -33,7 +34,9 @@ const TripsResults = () => {
         setResultSortBy("earlier")
         tripService
             .getTrip({ tripData })
-            .then(({ data }) => setTripsBringResults(SortArrByTimeEarlier(data)))
+            .then(({ data }) => {
+                setTripsBringResults(SortArrByTimeEarlier(data))
+            })
             .catch(e => console.log(e))
 
     }, [clearAll]);

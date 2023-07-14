@@ -24,7 +24,7 @@ class TripService {
 
 
     getTrip({ tripData }) {
-        return this.api.get(`/${tripData.origin}/${tripData.destination}/${tripData.date}/${tripData.originId}/${tripData.destinationId}`)
+        return this.api.get(`/${tripData.origin}/${tripData.destination}/${tripData.date}/${tripData.originId}/${tripData.destinationId}/${tripData.passengers}`)
     }
 
     getOneTrip(idTrip) {
@@ -45,8 +45,12 @@ class TripService {
 
 
     tripPassengers(data) {
-        console.log("dataaaa", data)
         return this.api.put(`/passengers`, data)
+    }
+
+    getUserTrips(idUser) {
+        return this.api.get(`/userTrips/${idUser}`)
+
     }
 
 

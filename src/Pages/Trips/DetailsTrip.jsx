@@ -1,11 +1,13 @@
 import { useContext, useEffect, useState } from "react"
-import RouteMap from "../../Components/Others/Map/RouteMap"
 import tripService from "../../services/Trip.services"
 import { useParams } from "react-router-dom"
 import getCoordinates from "../../utils/getCoordinates"
 import DetailsRouteMap from "../../Components/Others/Map/DetailsRouteMap"
 import Loading from "../../Components/Others/Loading/Loading"
 import { AuthContext } from "../../contexts/auth.context"
+import { Toast } from 'react-bootstrap'
+import formatDate from "../../utils/FormatDate"
+
 
 
 const DetailsTrip = () => {
@@ -14,6 +16,8 @@ const DetailsTrip = () => {
     const [coordinates_origin, setCoordinates_origin] = useState()
     const [coordinates_destination, setCoordinates_destination] = useState()
     const [showButton, setButton] = useState()
+    const [showToast, setShowToast] = useState(false)
+
 
 
     const { idViaje: idTrip } = useParams()
@@ -33,12 +37,15 @@ const DetailsTrip = () => {
         tripService
             .getOneTrip(idTrip)
             .then(({ data }) => {
-                data?.request.includes(user?.id)
-                    ? setButton(false)
-                    : setButton(true)
+                if (data?.request.includes(user?._id)) {
+                    setButton(false)
+                }
+                else if (data?.passengersIds.some(obj => obj._id == user?._id)) { setButton("display") }
+                else setButton(true)
             })
             .catch(e => console.log(e))
     }, [])
+
 
 
 
@@ -55,7 +62,11 @@ const DetailsTrip = () => {
                 .catch(e => console.log(e))
 
         }
+        showButton && setShowToast(true)
     };
+
+
+    const closeToast = () => setShowToast(false)
 
 
     return (
@@ -72,8 +83,63 @@ const DetailsTrip = () => {
 
             </header>
 
+            <section className="section2">
+                <div className="details">
+                    <h3>Detalles del Viaje</h3>
+                    <div style={{ display: "flex", justifyContent: "space-around", marginTop: "8%", marginBottom: "5%" }}>
+                        <div style={{ textAlign: "left" }}>
+                            <p><span>Origen: </span>{tripData?.origin.name}</p>
+                            <p><span>Destino: </span>{tripData?.destination.name}</p>
+                            <p><span>Precio: </span>{tripData?.price}€</p>
+                            <p><span>Plazas restantes: </span>{tripData?.passengers - tripData?.passengersIds.length}</p>
+                        </div>
+                        <div style={{ textAlign: "left" }}>
+                            <p><span>Fecha del viaje: </span>{formatDate(tripData?.date)}</p>
+                            <p><span>Hora de salida: </span>{tripData?.hourDeparture}</p>
+                            <p><span>Duración del viaje: </span>{tripData?.duration}</p>
+                        </div>
+
+                    </div>
+                    <h3>Conductor</h3>
+                    <div style={{ display: "flex", marginLeft: "5%", marginTop: "5%" }} className="driver">
+                        <img src={tripData?.owner.avatar} alt="" />
+                        <span style={{ display: "flex", flexDirection: "column" }}>
+                            <span>{tripData?.owner.firstName} {tripData?.owner.lastName}</span>
+                            <span style={{ color: "gray", textAlign: "left" }}>4.5 {"\u2605"}</span>
+
+                        </span>
+
+                    </div>
+
+                </div>
+                <div className="pass">
+                    <h3>Pasajeros</h3>
+                    <div className="passengersDetailsTrip">
+                        {
+                            tripData
+                                ? tripData.passengersIds.map((elem) => {
+                                    return (
+                                        <div key={elem._id} className="eachPass">
+                                            <img src={elem.avatar} alt="" />
+                                            <span style={{ display: "flex", flexDirection: "column" }}>
+                                                <span>{elem.firstName} {elem.lastName}</span>
+                                                <span style={{ color: "gray", textAlign: "left" }}>4.5 {"\u2605"}</span>
+
+                                            </span>
+
+                                        </div>
+                                    )
+                                })
+                                : <Loading />
+                        }
+                    </div>
+
+
+                </div>
+            </section>
+
             {
-                (tripData?.owner != user?._id) &&
+                ((tripData?.owner._id != user?._id) && showButton != "display") &&
                 <section className="section3" >
                     {
                         showButton
@@ -81,6 +147,16 @@ const DetailsTrip = () => {
                             : <button style={{ backgroundColor: "red" }} onClick={handleButton}> Eliminar Solicitud</button>
                     }
                 </section>}
+
+
+            <Toast onClose={closeToast}
+                bg="success"
+                show={showToast} delay={3000} autohide style={{ position: 'fixed', bottom: 10, right: 10 }}>
+                <Toast.Header>
+                    <strong className="me-auto">Solicitud de viaje enviada</strong>
+                </Toast.Header>
+
+            </Toast>
         </main >
     )
 }

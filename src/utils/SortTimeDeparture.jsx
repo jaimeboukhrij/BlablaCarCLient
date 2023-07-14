@@ -2,8 +2,6 @@
 const SortTimeDeparture = (arr, data) => {
     let newData = []
 
-    console.log("-----", arr)
-
     if (arr.includes("-06:00")) {
         let result = data.filter((elem) => {
             return parseInt(elem.hourDeparture) < 6
@@ -18,7 +16,6 @@ const SortTimeDeparture = (arr, data) => {
         newData = [...newData, ...result]
     }
     if (arr.includes("-18:00")) {
-        console.log("nose")
         let result = data.filter((elem) => {
             return (!(12 > parseInt(elem.hourDeparture)) && (parseInt(elem.hourDeparture) < 18))
         })

@@ -1,0 +1,90 @@
+.yourTrips {
+    padding: 5%;
+    padding-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.yourTrips h3 {
+    margin-bottom: 10%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.yourTrips .driverTrips,
+.yourTrips .passengersTrips {
+    width: 120%;
+}
+
+
+
+.yourTrips .eachTrip {
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 5%;
+    margin-top: 3%;
+    margin-bottom: 8%;
+    background-color: white;
+    height: 220px;
+    width: 85%;
+    border-radius: 15px;
+    border-top: 1px solid rgb(198, 197, 197);
+    box-shadow: 0px 1px 2px rgb(198, 197, 197);
+    transition: 500ms;
+}
+
+
+.yourTrips .eachTrip:hover {
+    transform: scale(102%);
+    cursor: pointer;
+}
+
+.yourTrips .eachTrip .price {
+    font-weight: bold;
+    height: 40px;
+    margin-bottom: 190%;
+}
+
+
+.yourTrips .eachTrip .data {
+    min-width: 315px;
+}
+
+.yourTrips .eachTrip .data p {
+    display: flex;
+    justify-content: left;
+    width: 140%;
+    color: black;
+    font-size: 1.2em;
+    margin-bottom: 3%;
+}
+
+.yourTrips .eachTrip .data p:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    width: 140%;
+    color: rgb(125, 122, 122);
+    margin-left: 0%;
+    font-weight: 600;
+    font-size: 1.1em !important;
+}
+
+.yourTrips .eachTrip img {
+    width: 50px;
+    object-fit: cover;
+    clip-path: circle();
+}
+
+
+
+
+.yourTrips .eachTrip .userTrip span {
+    font-weight: 540;
+
+}
+
+.yourTrips .eachTrip .line {
+    position: relative;
+    left: 13.6%;
+    bottom: 85%;
+}
