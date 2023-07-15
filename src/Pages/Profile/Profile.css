@@ -1,0 +1,179 @@
+.profile {
+    margin: 0 auto;
+    padding-top: 5%;
+    width: 50%;
+    height: 90vh;
+}
+
+.profile .name {
+    width: 100%;
+    margin-bottom: 7%;
+    border-bottom: 2px solid #EDEDED;
+}
+
+.profile .name p {
+    font-size: 1.4em;
+}
+
+.profile .name #edit {
+    color: #00AFF5;
+    font-weight: bold;
+    font-size: 1em;
+    transition: 300ms;
+    padding: 2%;
+}
+
+.profile .name #edit:hover {
+    background-color: rgb(247, 244, 244);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.profile .name img {
+    width: 150px;
+    object-fit: cover;
+    clip-path: circle();
+}
+
+
+
+
+
+
+
+.profile .personalData h6 {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+
+.profile .personalData div {
+    color: #00AFF5;
+    font-weight: bold;
+    font-size: 1em;
+    transition: 300ms;
+    padding: 2%;
+    border-bottom: 2px solid #EDEDED;
+}
+
+.profile .personalData div:hover {
+    background-color: rgb(247, 244, 244);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+
+
+.choiceTrip {
+    width: 55%;
+    margin: 0 auto;
+    margin-top: 5%;
+    padding-left: 1%;
+}
+
+.choiceTrip h3 {
+    text-align: center;
+    margin-top: 5%;
+    font-weight: bold;
+    font-size: 2.4em;
+    margin-bottom: 8%;
+}
+
+
+.choiceTrip .eachOne {
+    margin-bottom: 1%;
+    transition: 300ms;
+    padding: 2%;
+}
+
+.choiceTrip .eachOne:hover {
+    background-color: rgb(247, 244, 244);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.choiceTrip .eachOne span {
+    margin-bottom: 0;
+    color: #6F8B90;
+    margin-right: 2%;
+}
+
+.choiceTrip .eachOne p {
+    display: flex;
+    margin-top: 2% !important;
+}
+
+.choiceTrip .eachOne p {
+    margin-top: 0;
+    color: #0BB2F5;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.talk .form-check-input {
+    border: 2px solid #00AFF5;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.talk .form-check-input[type="radio"]:checked {
+    border: 2px solid #00AFF5;
+    background-color: #00AFF5;
+
+}
+
+.talk .eachSort {
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+}
+
+.talk .eachSort h5 {
+    font-weight: 550;
+}
+
+.talk .eachSort span {
+    margin-right: 5%;
+}
+
+.talk .eachSort:hover {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(247, 244, 244);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.talk button {
+    margin-top: 6%;
+    margin-left: 40%;
+    color: white;
+    font-weight: bold;
+    background-color: #00AFF5;
+    border: none;
+    border-radius: 30px;
+    padding: 2% 4%;
+}
+
+.talk button:hover {
+    margin-top: 6%;
+    margin-left: 40%;
+    color: white;
+    font-weight: bold;
+    background-color: #0e80ad;
+    border: none;
+    border-radius: 30px;
+    padding: 2% 4%;
+}
+
+.profile .data span {
+    margin-right: 3%;
+}
+
+.profile .info {
+    margin-top: 4%;
+    color: #6F8B90;
+    font-weight: bold;
+    font-size: 1.2em;
+}

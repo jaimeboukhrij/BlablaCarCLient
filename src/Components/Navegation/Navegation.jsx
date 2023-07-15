@@ -97,7 +97,7 @@ const Navegation = () => {
 
                         {user
                             ? <NavDropdown title={user ? <img src={user.avatar}></img> : userBox} id="navbarScrollingDropdown" style={{ marginTop: "2%" }}>
-                                <NavDropdown.Item onClick={() => navigate("/perfil")}>Mi Perfil</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => navigate("/miperfil")}>Mi Perfil</NavDropdown.Item>
                                 <NavDropdown.Item onClick={() => navigate("/tusviajes")}>Tus viajes</NavDropdown.Item>
                                 <NavDropdown.Item onClick={handleShow}>Peticiones de viaje</NavDropdown.Item>
                                 <NavDropdown.Divider />

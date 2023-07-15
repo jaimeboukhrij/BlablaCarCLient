@@ -26,7 +26,7 @@ const AppRoutes = () => {
             <Route element={<PrivateRoute />}>
                 <Route path="/crearviaje" element={<CreateTrip />}></Route>
                 <Route path="/detallesviaje/:idViaje" element={<DetailsTrip />}></Route>
-                <Route path="/profile" element={<Profile />}></Route>
+                <Route path="/miperfil/" element={<Profile />}></Route>
                 <Route path="/tusviajes" element={<YourTrips />}></Route>
 
 
