@@ -50,8 +50,18 @@ class TripService {
 
     getUserTrips(idUser) {
         return this.api.get(`/userTrips/${idUser}`)
-
     }
+
+    saveReviews(data) {
+        return this.api.put(`/reviews`, data)
+    }
+
+    getUserReview(idUser) {
+        return this.api.get(`/userReviews/${idUser}`)
+    }
+
+
+
 
 
 

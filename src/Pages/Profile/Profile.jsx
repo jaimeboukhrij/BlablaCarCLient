@@ -6,6 +6,7 @@ import userService from "../../services/User.services";
 import AgeCalculator from "../../utils/AgeCalculator";
 import tripService from "../../services/Trip.services";
 import FormatDateProfile from "../../utils/FormatDateProfile";
+import ProfileReview from "../../Components/Profile/ProfileReiview";
 
 
 const Profile = () => {
@@ -79,6 +80,10 @@ const Profile = () => {
 
                     </section>
 
+                    <section className="review">
+                        <ProfileReview />
+                    </section>
+
                     <section className="personalData">
                         <h6 style={{ marginBottom: "5%" }}>Informacion personal</h6>
                         <article className="data">
@@ -102,7 +107,7 @@ const Profile = () => {
                     </section>
 
                     <section className="info">
-                        <p>{userTrips.length} viajes publicados </p>
+                        <p>{userTrips?.length} viajes publicados </p>
                         <p>Usuario desde {FormatDateProfile(showUser.createdAt)}</p>
                     </section>
                 </main>

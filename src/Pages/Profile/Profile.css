@@ -7,7 +7,7 @@
 
 .profile .name {
     width: 100%;
-    margin-bottom: 7%;
+    margin-bottom: 4%;
     border-bottom: 2px solid #EDEDED;
 }
 
@@ -176,4 +176,29 @@
     color: #6F8B90;
     font-weight: bold;
     font-size: 1.2em;
+}
+
+
+
+
+
+
+.profile .reviewsection {
+    margin-bottom: 4%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3%;
+}
+
+.profile .reviewsection:hover {
+    background-color: rgb(247, 244, 244);
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.profile .reviewsection p {
+    font-size: 1.2em;
+    margin-left: 5%;
+    font-weight: bold;
+    color: #6F8B90;
 }

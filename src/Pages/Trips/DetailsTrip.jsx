@@ -5,8 +5,10 @@ import getCoordinates from "../../utils/getCoordinates"
 import DetailsRouteMap from "../../Components/Others/Map/DetailsRouteMap"
 import Loading from "../../Components/Others/Loading/Loading"
 import { AuthContext } from "../../contexts/auth.context"
-import { Toast } from 'react-bootstrap'
+import { Button, Toast } from 'react-bootstrap'
 import formatDate from "../../utils/FormatDate"
+import isCurrentDayLaterThan from "../../utils/isCurrentDayLaterThan"
+import Reviews from "../../Components/Trip/Reviews/Reviews"
 
 
 
@@ -17,6 +19,12 @@ const DetailsTrip = () => {
     const [coordinates_destination, setCoordinates_destination] = useState()
     const [showButton, setButton] = useState()
     const [showToast, setShowToast] = useState(false)
+    const [showModal, setShowModal] = useState(false)
+    const [showPerson, setPerson] = useState();
+
+
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
 
 
@@ -44,7 +52,7 @@ const DetailsTrip = () => {
                 else setButton(true)
             })
             .catch(e => console.log(e))
-    }, [])
+    }, [showModal, showPerson])
 
 
 
@@ -134,7 +142,14 @@ const DetailsTrip = () => {
                         }
                     </div>
 
+                    {
+                        isCurrentDayLaterThan(tripData?.date) &&
+                        <Button onClick={handleShow} style={{ marginTop: "5%" }}>Escribe tu reseña</Button>
+                    }
 
+                    <Reviews handleClose={handleClose} showModal={showModal} tripData={tripData} setTripData={setTripData}
+                        showPerson={showPerson} setPerson={setPerson}
+                    />
                 </div>
             </section>
 
