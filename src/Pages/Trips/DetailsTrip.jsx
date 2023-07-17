@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import tripService from "../../services/Trip.services"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import getCoordinates from "../../utils/getCoordinates"
 import DetailsRouteMap from "../../Components/Others/Map/DetailsRouteMap"
 import Loading from "../../Components/Others/Loading/Loading"
@@ -26,7 +26,7 @@ const DetailsTrip = () => {
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
 
-
+    const navigate = useNavigate()
 
     const { idViaje: idTrip } = useParams()
 
@@ -109,7 +109,7 @@ const DetailsTrip = () => {
 
                     </div>
                     <h3>Conductor</h3>
-                    <div style={{ display: "flex", marginLeft: "5%", marginTop: "5%" }} className="driver">
+                    <div style={{ display: "flex", marginLeft: "5%", marginTop: "5%" }} className="driver" onClick={() => navigate(`/perfil/${tripData?.owner._id}`)}>
                         <img src={tripData?.owner.avatar} alt="" />
                         <span style={{ display: "flex", flexDirection: "column" }}>
                             <span>{tripData?.owner.firstName} {tripData?.owner.lastName}</span>
@@ -127,7 +127,7 @@ const DetailsTrip = () => {
                             tripData
                                 ? tripData.passengersIds.map((elem) => {
                                     return (
-                                        <div key={elem._id} className="eachPass">
+                                        <div key={elem._id} className="eachPass" onClick={() => navigate(`/perfil/${elem._id}`)}>
                                             <img src={elem.avatar} alt="" />
                                             <span style={{ display: "flex", flexDirection: "column" }}>
                                                 <span>{elem.firstName} {elem.lastName}</span>

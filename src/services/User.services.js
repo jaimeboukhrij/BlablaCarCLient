@@ -27,6 +27,10 @@ class UserService {
         return this.api.get(`/${idUser}`)
     }
 
+    editUserAvatar(data) {
+        return this.api.put(`/editUserAvatar`, data)
+    }
+
     editUSerpersonalData(editUSerpersonalData) {
         return this.api.put(`/editUSerpersonalData`, editUSerpersonalData)
     }

@@ -94,8 +94,8 @@ const SearchTrip = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const { origin, destination, date, originId, destinationId } = tripData
-        navigate(`/${origin}/${destination}/${date}/${originId}/${destinationId}`)
+        const { origin, destination, date, originId, destinationId, passengers } = tripData
+        navigate(`/${origin}/${destination}/${date}/${originId}/${destinationId}/${passengers}`)
 
     }
 

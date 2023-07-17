@@ -33,6 +33,10 @@ const RouteMap = ({ coordinates_origin, coordinates_destination, setTripData, tr
         setCenter(coordinates_origin);
     }, [coordinates_origin]);
 
+    useEffect(() => {
+        setCenter(coordinates_origin);
+    }, [coordinates_origin]);
+
     return (
         <GoogleMap zoom={7} center={center} mapContainerStyle={{ height: "90vh", width: "100%" }}>
             <Marker position={center} />
